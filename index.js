@@ -11,9 +11,9 @@ const jwt = require("jsonwebtoken");
 const post = require("./model/post.js");
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URI) 
-  .then(() => console.log("MongoDB Atlas Connected"))
-  .catch(err => console.log("MongoDB connection error:", err));
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>console.log("MongoDB Atlas Connected"))
+.catch(err=>console.log("MongoDB connection error:",err));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -92,16 +92,22 @@ app.get('/delete/:id',isloggedin,async(req,res)=>
   res.redirect('/profile')
 })
 app.post("/post", isloggedin, async (req, res) => {
-  let user = await Usermodel.findOne({ email: req.user.email });
-  let createpost = await Postmodel.create({
-    user: user._id,
-    content: req.body.content,
-  });
-  user.posts.push(createpost._id)
-  await user.save()
-  res.redirect("/profile")
-});
+  try {
+    let user = await Usermodel.findOne({ email: req.user.email });
 
+    let createpost = await Postmodel.create({
+      user: user._id,
+      content: req.body.content,
+    });
+
+    user.posts.push(createpost._id);
+    await user.save();
+
+    res.redirect("/profile");
+  } catch (err) {
+    res.status(500).send("Error creating post");
+  }
+});
 app.post("/login", async (req, res) => {
   let { email, password } = req.body;
   let user = await Usermodel.findOne({ email });
