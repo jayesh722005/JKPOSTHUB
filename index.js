@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get('/',(req,res)=>
@@ -108,6 +109,7 @@ app.post("/post", isloggedin, async (req, res) => {
     res.status(500).send("Error creating post");
   }
 });
+
 app.post("/login", async (req, res) => {
   let { email, password } = req.body;
   let user = await Usermodel.findOne({ email });
@@ -125,6 +127,9 @@ app.get("/logout", (req, res) => {
   res.cookie("token", "");
   res.redirect("/login");
 });
+app.get("/test", (req, res) => {
+  res.send("Server working on Render 🚀");
+});
 
 function isloggedin(req, res, next) {
   if (req.cookies.token === "") res.redirect("/login");
@@ -135,6 +140,6 @@ function isloggedin(req, res, next) {
   }
 }
 const PORT = process.env.PORT || 2000;
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log("running...");
 });
