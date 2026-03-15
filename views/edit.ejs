@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="/stylesheet/edit.css" />
+  <div class="page">
+    <body>
+    <header class="topbar">
+      <h2 class="logo">My Profile</h2>
+      <a class="logout-btn" href="/profile">Back</a>
+    </header>
+    <form class="post-form" action="/update/<%= post._id%>" method="post">
+      <textarea
+        name="content"
+        placeholder="What's on your mind?"
+        required
+      ><%= post.content %></textarea>
+
+      <button type="submit">Update Post</button>
+    </form>
+  </div>
+  </body>
+</html>

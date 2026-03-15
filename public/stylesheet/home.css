@@ -1,0 +1,191 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui;
+}
+
+body{
+min-height:100vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+display:flex;
+flex-direction:column;
+}
+
+/* navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 80px;
+color:white;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.nav-btn a{
+text-decoration:none;
+margin-left:15px;
+}
+
+.nav-btn button{
+padding:8px 16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+}
+
+.login{
+background:white;
+color:#4f46e5;
+}
+
+.register{
+background:#22c55e;
+color:white;
+}
+
+/* hero section */
+
+.hero{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+flex-direction:column;
+padding:20px;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:18px;
+margin-bottom:35px;
+opacity:.9;
+}
+
+/* buttons */
+
+.buttons a{
+text-decoration:none;
+}
+
+.buttons button{
+padding:14px 28px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+transition:.3s;
+}
+
+.create{
+background:#22c55e;
+color:white;
+}
+
+.explore{
+background:white;
+color:#4f46e5;
+}
+
+.buttons button:hover{
+transform:scale(1.05);
+}
+
+/* features */
+
+.features{
+background:white;
+padding:60px 80px;
+display:flex;
+justify-content:space-around;
+text-align:center;
+gap:20px;
+}
+
+.card{
+width:250px;
+}
+
+.card h3{
+margin-bottom:10px;
+color:#4f46e5;
+}
+
+.card p{
+color:gray;
+}
+
+
+/* ---------------- RESPONSIVE ---------------- */
+
+/* Tablet */
+
+@media (max-width:900px){
+
+nav{
+padding:20px 40px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.features{
+flex-wrap:wrap;
+}
+
+.card{
+width:45%;
+margin-bottom:20px;
+}
+
+}
+
+
+/* Mobile */
+
+@media (max-width:600px){
+
+nav{
+flex-direction:column;
+gap:15px;
+padding:20px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.buttons button{
+width:200px;
+}
+
+.features{
+flex-direction:column;
+align-items:center;
+padding:40px 20px;
+}
+
+.card{
+width:100%;
+max-width:300px;
+}
+
+}

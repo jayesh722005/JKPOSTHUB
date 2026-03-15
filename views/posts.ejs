@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Posts</title>
+
+<link rel="stylesheet" href="/stylesheet/posts.css">
+
+</head>
+
+<body>
+
+<div class="top-bar">
+<button onclick="history.back()" class="back-btn">⬅ Back</button>
+</div>
+
+<h1>Explore Posts</h1>
+
+<% posts.reverse().forEach((p)=> { %>
+
+<div class="content">
+
+<h3><%= p.user.username %></h3>
+
+<p><%= p.content %></p>
+
+</div>
+
+<% }) %>
+
+</body>
+</html>

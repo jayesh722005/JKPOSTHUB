@@ -1,0 +1,136 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#f3f4f6;
+padding:20px;
+}
+
+/* login box */
+
+.main{
+background:white;
+padding:30px 40px;
+width:380px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.main h2{
+margin-bottom:25px;
+color:#333;
+}
+
+/* form layout */
+
+form{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+/* inputs */
+
+input{
+width:90%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:14px;
+margin:auto;
+}
+
+/* buttons */
+
+button{
+width:90%;
+margin:auto;
+padding:10px;
+border:none;
+border-radius:6px;
+background:#22c55e;
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#1a753b;
+}
+
+/* home button */
+
+a button{
+background:#e5e7eb;
+color:#333;
+}
+
+a button:hover{
+background:#d1d5db;
+}
+
+/* text */
+
+p{
+margin-top:15px;
+font-size:14px;
+}
+
+p a{
+color:#1a753b;
+text-decoration:none;
+font-weight:500;
+}
+
+/* ---------- tablet responsive ---------- */
+
+@media (max-width:768px){
+
+.main{
+width:90%;
+padding:25px;
+}
+
+input{
+width:100%;
+}
+
+button{
+width:100%;
+}
+
+}
+
+/* ---------- mobile responsive ---------- */
+
+@media (max-width:480px){
+
+.main{
+padding:20px;
+}
+
+.main h2{
+font-size:20px;
+}
+
+input{
+font-size:13px;
+padding:9px;
+}
+
+button{
+font-size:14px;
+padding:9px;
+}
+
+}

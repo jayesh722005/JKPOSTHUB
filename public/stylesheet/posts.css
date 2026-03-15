@@ -1,0 +1,134 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui;
+}
+
+body{
+background:#f4f6f8;
+min-height:100vh;
+padding:40px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+/* heading */
+
+h1{
+text-align:center;
+margin-bottom:35px;
+color:#333;
+}
+
+/* container */
+
+.container{
+width:100%;
+max-width:700px;
+}
+
+/* back button */
+
+.top-bar{
+width:100%;
+margin-bottom:20px;
+}
+
+.back-btn{
+padding:8px 16px;
+border:none;
+background:#4f46e5;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+transition:.2s;
+}
+
+.back-btn:hover{
+background:#4338ca;
+}
+
+/* post card */
+
+.content{
+width:100%;
+margin:15px 0;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.content:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* username */
+
+.content h3{
+color:#4f46e5;
+margin-bottom:10px;
+font-size:18px;
+}
+
+/* post text */
+
+.content p{
+color:#555;
+line-height:1.5;
+font-size:15px;
+}
+
+/* ---------- tablet ---------- */
+
+@media (max-width:768px){
+
+body{
+padding:30px 15px;
+}
+
+h1{
+font-size:24px;
+}
+
+.content{
+padding:20px;
+}
+
+}
+
+/* ---------- mobile ---------- */
+
+@media (max-width:480px){
+
+body{
+padding:20px 12px;
+}
+
+h1{
+font-size:20px;
+margin-bottom:25px;
+}
+
+.back-btn{
+width:100%;
+}
+
+.content{
+padding:18px;
+}
+
+.content h3{
+font-size:16px;
+}
+
+.content p{
+font-size:14px;
+}
+
+}   
