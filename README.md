@@ -4,6 +4,12 @@ A full-stack social media web application built using **Node.js**, **Express.js*
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Demo:** https://jkposthub-blond.vercel.app/
+
+---
+
 ## 📖 About the Project
 
 JKPOSTHUB is a CRUD-based social media platform developed to learn and demonstrate full-stack web development concepts. It includes secure user authentication, post management, profile handling, and MongoDB database integration.
@@ -44,7 +50,7 @@ JKPOSTHUB is a CRUD-based social media platform developed to learn and demonstra
 
 ## 📂 Project Structure
 
-```
+```text
 JKPOSTHUB/
 │
 ├── model/
@@ -80,7 +86,7 @@ cd JKPOSTHUB
 npm install
 ```
 
-### Create a .env File
+### Create a `.env` File
 
 ```env
 PORT=3000
@@ -102,7 +108,7 @@ nodemon index.js
 
 Open your browser:
 
-```
+```text
 http://localhost:3000
 ```
 
@@ -134,13 +140,13 @@ _Add Screenshot_
 
 ## 📌 Project Highlights
 
-- Full CRUD Operations
-- MVC Architecture
-- Secure Authentication using JWT
-- MongoDB Integration
-- Password Encryption with Bcrypt
-- Dynamic Pages using EJS
-- Responsive Design
+- ✅ Full CRUD Operations
+- 🏗️ MVC Architecture
+- 🔐 Secure Authentication using JWT
+- 🍃 MongoDB Integration
+- 🔒 Password Encryption with Bcrypt
+- 📄 Dynamic Pages using EJS
+- 📱 Responsive Design
 
 ---
 
@@ -152,20 +158,19 @@ _Add Screenshot_
 - 👥 Follow/Unfollow Users
 - 🔍 Search Users
 - 🌙 Dark Mode
-- 📱 Mobile Responsive Improvements
+- 📱 Improved Mobile Responsiveness
 - ☁️ Cloud Image Storage
 
 ---
 
 ## 👨‍💻 Author
 
-### Jayesh Khatke
+### **Jayesh Khatke**
 
 🎓 B.Tech Student | MERN Stack Developer
 
-GitHub: https://github.com/jayesh722005
-
-LinkedIn: *(Add your LinkedIn Profile)*
+- **GitHub:** https://github.com/jayesh722005
+- **LinkedIn:** *(Add your LinkedIn Profile)*
 
 ---
 
@@ -173,32 +178,32 @@ LinkedIn: *(Add your LinkedIn Profile)*
 
 Contributions are welcome!
 
-1. Fork the repository
-2. Create a new branch
+1. Fork the repository.
+2. Create a new branch:
 
 ```bash
 git checkout -b feature-name
 ```
 
-3. Commit your changes
+3. Commit your changes:
 
 ```bash
 git commit -m "Added new feature"
 ```
 
-4. Push your branch
+4. Push your branch:
 
 ```bash
 git push origin feature-name
 ```
 
-5. Open a Pull Request
+5. Open a Pull Request.
 
 ---
 
 ## ⭐ Support
 
-If you found this project helpful, please consider giving it a ⭐ on GitHub.
+If you found this project helpful, please consider giving it a ⭐ on GitHub!
 
 ---
 
@@ -206,4 +211,4 @@ If you found this project helpful, please consider giving it a ⭐ on GitHub.
 
 This project is developed for educational and learning purposes.
 
-© 2026 Jayesh Khatke
+© 2026 **Jayesh Khatke**
