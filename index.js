@@ -6,7 +6,7 @@ const Usermodel = require("./model/user.js");
 const Postmodel = require("./model/post.js");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const post = require("./model/post.js");
 const mongoose = require("mongoose");
@@ -31,23 +31,34 @@ app.get("/form", (req, res) => {
   res.render("index");
 });
 app.post("/register", async (req, res) => {
-  const { username, name, email, password, age } = req.body;
-  let user = await Usermodel.findOne({ email });
-  if (user) return res.status(500).send("User already registered");
-  bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash(password, salt, async function (err, hash) {
-      let createuser = await Usermodel.create({
-        username,  
-        name,
-        email,
-        password: hash,
-        age,
-      });
-      let token = jwt.sign({ email: email, userid: createuser._id },process.env.JWT_SECRET);
-      res.cookie("token", token);
-      return res.redirect("/");
+  try {
+    const { username, name, email, password, age } = req.body;
+    
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).send("Server Configuration Error: JWT_SECRET environment variable is not defined on Vercel.");
+    }
+
+    let user = await Usermodel.findOne({ email });
+    if (user) return res.status(400).send("User already registered");
+
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+
+    let createuser = await Usermodel.create({
+      username,  
+      name,
+      email,
+      password: hash,
+      age,
     });
-  });
+
+    let token = jwt.sign({ email: email, userid: createuser._id }, process.env.JWT_SECRET);
+    res.cookie("token", token);
+    return res.redirect("/");
+  } catch (err) {
+    console.error("Register Error:", err);
+    return res.status(500).send("Internal Server Error during registration: " + err.message);
+  }
 });
 
 app.get('/posts',async(req,res)=>
@@ -111,16 +122,28 @@ app.post("/post", isloggedin, async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  let { email, password } = req.body;
-  let user = await Usermodel.findOne({ email });
-  if (!user) return res.status(500).send("Something went wrong");
-  bcrypt.compare(password, user.password).then(function (result) {
+  try {
+    let { email, password } = req.body;
+
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).send("Server Configuration Error: JWT_SECRET environment variable is not defined on Vercel.");
+    }
+
+    let user = await Usermodel.findOne({ email });
+    if (!user) return res.status(400).send("Invalid email or password");
+
+    const result = await bcrypt.compare(password, user.password);
     if (result) {
-      let token = jwt.sign({ email: email, userid: user._id },process.env.JWT_SECRET);
+      let token = jwt.sign({ email: email, userid: user._id }, process.env.JWT_SECRET);
       res.cookie("token", token);
-      res.status(200).redirect("/profile");
-    } else res.redirect("/login");
-  });
+      return res.status(200).redirect("/profile");
+    } else {
+      return res.redirect("/login");
+    }
+  } catch (err) {
+    console.error("Login Error:", err);
+    return res.status(500).send("Internal Server Error during login: " + err.message);
+  }
 });
 
 app.get("/logout", (req, res) => {
@@ -132,11 +155,15 @@ app.get("/test", (req, res) => {
 });
 
 function isloggedin(req, res, next) {
-  if (req.cookies.token === "") res.redirect("/login");
-  else {
-    let data = jwt.verify(req.cookies.token,process.env.JWT_SECRET);
+  if (!req.cookies || !req.cookies.token) {
+    return res.redirect("/login");
+  }
+  try {
+    let data = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
     req.user = data;
     next();
+  } catch (err) {
+    res.redirect("/login");
   }
 }
 const PORT = process.env.PORT || 2000;
