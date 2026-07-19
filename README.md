@@ -6,7 +6,7 @@ A full-stack social media web application built using **Node.js**, **Express.js*
 
 ## 🌐 Live Demo
 
-🚀 **Demo:** https://jkposthub-blond.vercel.app/
+🚀 **Demo:** https://jkposthub-mf5eaqkh0-jkmarts-projects.vercel.app/
 
 ---
 
